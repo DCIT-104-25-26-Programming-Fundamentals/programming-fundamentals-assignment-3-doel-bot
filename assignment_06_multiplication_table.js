@@ -60,3 +60,48 @@
 // =============================================================================
 
 
+const readlineSync = require("readline-sync");
+
+function table(n)
+{
+    console.log("\nMultiplication Table for " + n + ":");
+
+    for (let i = 1; i <= 12; i++)
+    {
+        console.log(n + " x " + i + " = " + (n * i));
+    }
+}
+
+function allTables(n)
+{
+    for (let i = 1; i <= n; i++)
+    {
+        table(i);
+        console.log("---------------------------");
+    }
+}
+
+function main()
+{
+    let n = readlineSync.questionInt("Enter a number: ");
+
+    if (n <= 0)
+    {
+        console.log("Error: Number must be positive.");
+        return;
+    }
+
+    table(n);
+
+    let all = readlineSync.questionInt("\nEnter N for all tables: ");
+
+    if (all <= 0)
+    {
+        console.log("Error: Number must be positive.");
+        return;
+    }
+
+    allTables(all);
+}
+
+main();

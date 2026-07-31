@@ -75,3 +75,106 @@
 // =============================================================================
 
 
+const readlineSync = require("readline-sync");
+
+function add(a, b)
+{
+    return a + b;
+}
+
+function sub(a, b)
+{
+    return a - b;
+}
+
+function mul(a, b)
+{
+    return a * b;
+}
+
+function div(a, b)
+{
+    return a / b;
+}
+
+function mod(a, b)
+{
+    return a % b;
+}
+
+function power(a, b)
+{
+    return a ** b;
+}
+
+function main()
+{
+    let choice;
+
+    do
+    {
+        console.log("\n============================");
+        console.log("     SIMPLE CALCULATOR");
+        console.log("============================");
+        console.log("1. Addition");
+        console.log("2. Subtraction");
+        console.log("3. Multiplication");
+        console.log("4. Division");
+        console.log("5. Modulus");
+        console.log("6. Exponentiation");
+        console.log("7. Quit");
+
+        choice = readlineSync.questionInt("Select an operation (1-7): ");
+
+        if (choice >= 1 && choice <= 6)
+        {
+            let a = readlineSync.questionFloat("Enter first number: ");
+            let b = readlineSync.questionFloat("Enter second number: ");
+            let result;
+
+            if (choice == 1)
+            {
+                result = add(a, b);
+            }
+            else if (choice == 2)
+            {
+                result = sub(a, b);
+            }
+            else if (choice == 3)
+            {
+                result = mul(a, b);
+            }
+            else if (choice == 4)
+            {
+                if (b == 0)
+                {
+                    console.log("Error: Cannot divide by zero.");
+                    continue;
+                }
+
+                result = div(a, b);
+            }
+            else if (choice == 5)
+            {
+                result = mod(a, b);
+            }
+            else if (choice == 6)
+            {
+                result = power(a, b);
+            }
+
+            console.log("Result: " + result.toFixed(2));
+        }
+        else if (choice == 7)
+        {
+            console.log("Goodbye!");
+        }
+        else
+        {
+            console.log("Invalid choice.");
+        }
+
+    } while (choice != 7);
+}
+
+main();
